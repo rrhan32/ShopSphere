@@ -1,0 +1,7 @@
+.centered-stack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     /* Optionally, set the height to fill the container */
+    margin:25px;
+}
