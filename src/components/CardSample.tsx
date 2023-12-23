@@ -18,7 +18,7 @@ const randomValue = numbers[Math.floor(Math.random() * numbers.length)];
     textAlign: 'center',
     color: 'black',
   }));
-
+  
   return (
     <>
       <Grid container spacing={6}>

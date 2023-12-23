@@ -1,7 +1,10 @@
 .App {
   text-align: center;
+  
 }
-
+.bgclr{
+  background-color:#f28a4b;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +38,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+.custom-carousel-container {
+  width: 100%; /* Adjust the width as needed */
+  margin: 0px auto /* Center the container horizontally */
 }
