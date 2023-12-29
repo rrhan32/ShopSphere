@@ -78,6 +78,7 @@ import "../../App.css"
 // export default Checkout_;
 import React from 'react'
 import {useSelector} from 'react-redux';
+import Payment from "../Payment_gateway";
 
 function CheckoutPage() {
   const cartData=useSelector(state=>state.Cart);
@@ -91,7 +92,7 @@ function CheckoutPage() {
     <ul>{cartData.item_type.length===0?(
       <li>EMPTY CART</li>)
       :cartData.item_type.map((item)=><li>{item}</li>)}</ul>
-    <button>Pay</button>
+    <Payment><button>Pay</button></Payment>
     </>
 
   )
