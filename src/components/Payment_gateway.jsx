@@ -33,7 +33,7 @@ function Payment() {
     }
   return (
     <>
-       <div>Stripe Checkut</div>
+       <div>Stripe Checkout</div>
        <StripeCheckout stripeKey="pk_test_51OQlFdSFGlYRgejUKJxszlON4s7KKvC05DcjFkk5TBcqtZpG2XlSWpYibDVMRpDbzSTpxMpxMyNawH343qH3PoWU00vzbqK7Zi" token={makePayment} name='Buy React' amount={product.price*100}/>
     </>
 

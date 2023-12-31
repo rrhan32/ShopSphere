@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {useState,useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet, Link } from "react-router-dom";
@@ -12,7 +13,7 @@ import { add_to_cart } from '../Redux';
 
 
 export default function MediaCard(props) {
-  const {produce_api,randomVal}=props
+  // const {produce_api,randomVal}=props
   const dispatch=useDispatch();
   // console.log("prod",produce_api)
   const {info}=props;
@@ -20,7 +21,6 @@ export default function MediaCard(props) {
     // console.log(info.info);
     return dispatch(add_to_cart(info.info))
   }
-
   // Generate a random index within the array's bounds
   return (
     <Card sx={{ maxWidth: 345, }}>
@@ -32,7 +32,11 @@ export default function MediaCard(props) {
       />
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
-        {info ?  info.title : "Loading..."}
+        {info ? ( 
+          <Link to="/Product" state={{ info }}>
+         {info.title}
+          </Link>
+          ): "Loading..."}
         </Typography>
         <Typography variant="body2" color="text.secondary">
           {/* {produce_api && produce_api.length > 0 ?  produce_api[randomVal].description : "NO"} */}
@@ -43,8 +47,8 @@ export default function MediaCard(props) {
       </CardContent>
       <CardActions>
         <Button onClick={()=>onCardClick({info})} size="small">Add To Cart</Button>
-        <Link to="/checkout">
-          <Button size='small'> Buy Now</Button>
+        <Link to="/Product"  state={{info}}>
+          <Button size='small'> Buy Now </Button>
         </Link>
       </CardActions>
     </Card>

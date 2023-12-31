@@ -10,6 +10,7 @@ import { totalmem } from "os";
 import {Provider} from 'react-redux'
 import store from './Redux/store'
 import BuyNowPage from "./components/buynowpage";
+import Product from "./components/Product";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -21,6 +22,7 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="checkout" element={<Checkout_/>} />
       <Route path="buy_now" element={<BuyNowPage/>} />
+      <Route path="Product" element={<Product/>} />
       {/* <Route path="buy_now_page" element={<buy_now_page />} /> */}
     </Routes>
   </BrowserRouter>

@@ -78,11 +78,17 @@ import "../../App.css"
 // export default Checkout_;
 import React from 'react'
 import {useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import Payment from "../Payment_gateway";
+import { remove_from_cart } from "../../Redux";
 
 function CheckoutPage() {
   const cartData=useSelector(state=>state.Cart);
+  const dispatch=useDispatch();
   console.log("cartData",cartData)
+  const HandleDelete=(info)=>{
+    return dispatch(remove_from_cart(info))
+  }
   return (
     <>    
     <h1>CHECKOUT PAGE</h1>
@@ -90,8 +96,14 @@ function CheckoutPage() {
     <h2>TOTAL AMOUNT : {cartData.total_price}</h2>
     <h3>YOUR ITEMS </h3>
     <ul>{cartData.item_type.length===0?(
-      <li>EMPTY CART</li>)
-      :cartData.item_type.map((item)=><li>{item}</li>)}</ul>
+      <li>EMPTY CART</li>
+      )
+      :cartData.item_type.map((item)=>(
+      <div>
+      <li>{item}</li>
+      <button onClick={()=>HandleDelete(item)}>DELETE</button>
+      </div>))}
+      </ul>
     <Payment><button>Pay</button></Payment>
     </>
 
