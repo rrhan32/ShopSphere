@@ -57,7 +57,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
-  const [finalsearch,setFinalSearch]=useState('jewelery');
+  const [finalsearch,setFinalSearch]=useState('');
   const CartData=useSelector(state=>state.Cart)
   const dispatch=useDispatch();
   const [searchitem,setSearchItem]=useState('');

@@ -1,6 +1,7 @@
 import { product_list } from "./types";
 import { product_list_success } from "./types";
 import { product_list_failure } from "./types";
+import { v4 as uuidv4 } from 'uuid';
 const initialState={
     loading:false,
     products:[],
@@ -15,10 +16,14 @@ const Product_reducer=(state=initialState,action)=>{
 
             };
         case product_list_success:
+            const productsWithIds = action.payload.map(product => ({
+                ...product,
+                id: uuidv4(), // Generate a unique ID for each entry
+            }));
             return{
                 ...state,
                 loading: false,
-                products: action.payload,
+                products: productsWithIds,
                 error:''
 
             };

@@ -10,25 +10,48 @@ const initialState={
 const add_to_cartReducer = (state = initialState, action) => {
     switch (action.type) {
       case ADD_TO_CART:
-        state.item_type.push(action.item)
-        return {
-          ...state,
-          //items: [...state.items, action.item], // Create a new array with the updated items
-          total_price:state.total_price+action.price,
-          total_items: state.total_items + 1, // Calculate total_items based on the new length
-          
+        // state.item_type.push({action.item})
+        const ExistingItem=state.item_type.find(item=>item.title===action.item.title);
+        if (ExistingItem) {
+          // If the item already exists, update its quantity instead of adding a new one
+          ExistingItem.quantity += 1;
+          return {
+            ...state,
+            total_price: state.total_price + action.price,
+            total_items: state.total_items + 1,
+          };
+        } else {
+          // If the item is not in the cart, add it with a unique ID
+          return {
+            ...state,
+            item_type: [...state.item_type, { ...action.item, quantity: 1 }],
+            total_price: state.total_price + action.price,
+            total_items: state.total_items + 1,
+          };
         };
       case REMOVE_FROM_CART:
-        return {
+        const Del_item=state.item_type.find(item=>item.title===action.item.title);
+        if (Del_item.quantity>1)
+        {
+          Del_item.quantity-=1;
+          return{
+            ...state,
+            total_price: state.total_price - action.price,
+            total_items: state.total_items - 1,
 
-          ...state,
-          item_type: state.item_type.filter(item => item !== action.item), // Create a new array with the item removed
-          total_items: state.total_items - 1,
-          //items: [...state.items, action.item], // Create a new array with the updated items
-          // total_price:state.total_price-action.price,
-          // Calculate total_items based on the new length
-          
+          }
+
+        }
+        else{
+          return{
+            ...state,
+            item_type: state.item_type.filter(item => item.id !== action.item.id), // Create a new array with the item removed
+            total_items: state.total_items - 1,
+            total_price: state.total_price - action.price,
+          }
+
         };
+
       default:
         return state;
     }

@@ -9,13 +9,15 @@ function Api() {
     // console.log('product data',productData);
     const dispatch=useDispatch();
     useEffect(()=>{
-        dispatch(fetchProducts('jewelery'))
-    console.log(productData);
+        console.log('Input used in API call:', "");
+        dispatch(fetchProducts(""))
+        // console.log(productData)
+        
     },[])
-    useEffect(() => {
-      // This effect will run whenever productData changes
-      // console.log('Product data has changed:', productData);
-    }, [productData]);
+    // useEffect(() => {
+    //   // This effect will run whenever productData changes
+    // //   console.log('Input used in API call:', "");
+    // }, [productData]);
 
     return productData.loading ? (
       <h1>Loading...</h1>

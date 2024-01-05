@@ -100,7 +100,7 @@ function CheckoutPage() {
       )
       :cartData.item_type.map((item)=>(
       <div>
-      <li>{item}</li>
+      <li>{item.title}   Quantity:{item.quantity}</li>
       <button onClick={()=>HandleDelete(item)}>DELETE</button>
       </div>))}
       </ul>

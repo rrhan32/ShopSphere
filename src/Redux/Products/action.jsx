@@ -22,7 +22,9 @@ export const product_list_Failure=(error)=>{
 export const fetchProducts = (input) => {
     return (dispatch) => {
         dispatch(product_list_Request()); // Invoke the action creator to dispatch the action object
-        axios.get(`https://fakestoreapi.com/products/category/${input}`)
+        console.log("input is",input);
+        const url= !input ? "https://fakestoreapi.com/products":`https://fakestoreapi.com/products/category/${input}`;
+        axios.get(url)
             .then((response) =>
             { 
                 
