@@ -22,7 +22,7 @@ root.render(
       <Route path="/" element={<App />} />
       <Route path="checkout" element={<Checkout_/>} />
       <Route path="buy_now" element={<BuyNowPage/>} />
-      <Route path="Product" element={<Product/>} />
+      <Route path="product/:productId" element={<Product/>} />
       {/* <Route path="buy_now_page" element={<buy_now_page />} /> */}
     </Routes>
   </BrowserRouter>

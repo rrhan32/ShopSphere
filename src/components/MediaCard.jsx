@@ -17,6 +17,7 @@ export default function MediaCard(props) {
   const dispatch=useDispatch();
   // console.log("prod",produce_api)
   const {info}=props;
+  const url=`/Product/:${info.id}`
   const onCardClick=(info)=>{
     // console.log(info.info);
     return dispatch(add_to_cart(info.info))
@@ -33,7 +34,7 @@ export default function MediaCard(props) {
       <CardContent>
         <Typography gutterBottom variant="h6" component="div">
         {info ? ( 
-          <Link to="/Product" state={{ info }}>
+          <Link to={url} state={{ info }}>
          {info.title}
           </Link>
           ): "Loading..."}
@@ -47,7 +48,7 @@ export default function MediaCard(props) {
       </CardContent>
       <CardActions>
         <Button onClick={()=>onCardClick({info})} size="small">Add To Cart</Button>
-        <Link to="/Product"  state={{info}}>
+        <Link to={url}  state={{info}}>
           <Button size='small'> Buy Now </Button>
         </Link>
       </CardActions>
